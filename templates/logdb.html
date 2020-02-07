@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log dia {{context['dia']}}</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" /> 
+    
+</head>
+<body>  
+    <h1> Log Dia: <b>{{context['dia']}}</b></h1>
+    <h2>Ocorreram  Falta de Energia : {{context['faltaslog'].count()}}</h2>
+    {% for l in context['faltaslog']%}
+        
+            <a href="#id{{l.id-context['first']}}" ><b>{{l.id-context['first']}} , </b></a>
+            
+             
+    {%endfor%}
+    <h2>Ocorreram Sobre tensao : {{context['sobrelog'].count()}}</h2>
+    {% for l in context['sobrelog']%}
+      
+           <a href="#id{{l.id-context['first']}}" ><b>{{l.id-context['first']}} , </b></a>
+
+    {%endfor%}
+    
+    <h3>Todas as leituras</h3>
+    {% for l in context['leituralog']%}
+        {%if l.falta_t ==True %}
+            <p style="background-color:darkred ; color:white;" id="id{{l.id-context['first']}}"= ><b>{{l.id-context['first']}}</b> - Horario: <b>{{l.horas}}</b>  Tensao prox: <b>{{l.tensao}}v</b>  </p>
+            <p><b>FALTA DE ENERGIA!!!</b></p>
+        {%elif l.sobre_t ==True%}
+            <p style="background-color: red; color:white;" id="id{{l.id-context['first']}}"= ><b>{{l.id-context['first']}}</b> - Horario: <b>{{l.horas}}</b>  Tensao prox: <b>{{l.tensao}}v</b>  </p>
+            <p><b>SOBRE TENSAO!!!</b></p>
+        {%else%}
+            <p><b>{{l.id-context['first']}}</b> - Horario: <b>{{l.horas}}</b>  Tensao prox:<b>{{l.tensao}}v</b></p>
+            <br>
+        {%endif%}
+    
+    {%endfor%}
+</body>
+</html>

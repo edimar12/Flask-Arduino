@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dados Arduino</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/> 
+    
+</head>
+<body>
+    <p>
+        Bem Vindo!  {{User.query.get(user_id).username}}    
+        {%if session.get('user') %}<a href="http://localhost:5000/logout"> Logout</a> {%endif%}
+    </p>
+    {% block content %}{% endblock content%}
+</body>
+</html>

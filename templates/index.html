@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+{%block content%}
+{#{% if username == 'admin' and password == 'admin'%}
+    <p>USERNAME LOGADO: {{username}}</p>
+    <p><a href="/logout"> logout </a></p>
+#}
+    <h1> Dados para o Arduino</h1>
+
+    <form action = "http://localhost:5000/start" method="post">
+        {% for k, v in constantes.items() %}
+            <p>{{k}}
+            <input type="text" name="{{k}}"  id= "{{k}}" placeholder= "{{v}}...">
+            </p>
+
+        {% endfor%}
+            
+            <button type ="submit"> Inserir </button>
+    </form>
+    <h2> Visualizar os resultados:</h2>
+    <h3> Dia:</h3>
+    <form action = "http://localhost:5000/log" method="post">
+        <input type="date" name ="data" id="8"> 
+        <br>
+        <button type ="submit"> Visualizar </button>
+        <br>
+{#{%else%}
+    <a href="login.html">{{Logout}}</a>
+{%endif%}
+    #}
+</form>
+{%endblock%}
+</body>
+</html>

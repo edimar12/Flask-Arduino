@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Start</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/> 
+    
+</head>
+<body>
+<h1>Iniciando  </h1>
+
+<h2>Parametros Configurados!</h2>
+
+    
+
+    {%for l in leituras%}
+        {%if l.status != ''%}
+            <p>Energia está em ... {{l.status}}</p>
+        {%endif%}    
+        <p>Monitorando Energia ... {{l.tensao}}</p>
+        {%if l.falta_t == True%}
+            <p>Falta de Energia ...</p>
+        {%endif%}
+        {%if l.sobre_t == True%}
+            <p>Sobre Tensao</p>
+        {%endif%}
+    {%endfor%}
+<meta http-equiv="refresh" content="0;url=http://localhost:5000/start" />
+
+</body>
+</html>
